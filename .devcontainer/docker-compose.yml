@@ -1,13 +1,11 @@
 services:
   lab-runner:
-    build:
-      context: ./jupyter  # Relative path to the jupyter folder
-      dockerfile: Dockerfile
+    image: mcr.microsoft.com/devcontainers/universal:2
     volumes:
       - ../..:/workspaces:cached
     depends_on:
       - mongodb
-    user: "1000:100" #Set user and group ID.
+    user: "1000:100"
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
