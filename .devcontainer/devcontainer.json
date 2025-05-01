@@ -11,7 +11,8 @@
         "cpus": 4
     },
     "containerEnv": {
-        "SERVERLESS_URL": "https://vtqjvgchmwcjwsrela2oyhlegu0hwqnw.lambda-url.us-west-2.on.aws/"
+        "SERVERLESS_URL": "https://vtqjvgchmwcjwsrela2oyhlegu0hwqnw.lambda-url.us-west-2.on.aws/",
+        "MONGODB_URI": "mongodb://admin:mongodb@mongodb:27017/"
     },
     "updateContentCommand": "python3 -m pip install -r requirements.txt",
     "postCreateCommand": "",
