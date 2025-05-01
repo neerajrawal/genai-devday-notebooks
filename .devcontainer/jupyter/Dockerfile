@@ -8,4 +8,4 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Copy the requirements.txt
-COPY requirements.txt /home/genaiday/requirements.txt
+COPY requirements.txt /home/jovyan/requirements.txt
