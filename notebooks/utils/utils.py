@@ -73,13 +73,14 @@ def check_index_ready(collection: Collection, index_name: str) -> None:
         time.sleep(SLEEP_TIMER)
 
 
-def track_progress(task: str) -> None:
+def track_progress(task: str, workshop_id: str) -> None:
     """
     Track progress of a task
 
     Args:
         task (str): Task name
+        workshop (str): Workshop name
     """
     print(f"Tracking progress for task {task}")
-    payload = {"task": task, "id": CODESPACE_NAME}
+    payload = {"task": task, "workshop_id": workshop_id, "sandbox_id": CODESPACE_NAME}
     requests.post(url=SERVERLESS_URL, json={"task": "track_progress", "data": payload})
