@@ -7,7 +7,7 @@ import os
 
 SLEEP_TIMER = 5
 SERVERLESS_URL = os.getenv("SERVERLESS_URL")
-CODESPACE_ID = os.getenv("CODESPACE_ID")
+CODESPACE_NAME = os.getenv("CODESPACE_NAME")
 
 
 def create_index(collection: Collection, index_name: str, model: Dict) -> None:
@@ -81,5 +81,5 @@ def track_progress(task: str) -> None:
         task (str): Task name
     """
     print(f"Tracking progress for task {task}")
-    payload = {"task": task, "id": CODESPACE_ID}
+    payload = {"task": task, "id": CODESPACE_NAME}
     requests.post(url=SERVERLESS_URL, json={"task": "track_progress", "data": payload})
