@@ -1,9 +1,13 @@
 from pymongo.errors import OperationFailure
 from pymongo.collection import Collection
+import requests
 from typing import Dict
 import time
+import os
 
 SLEEP_TIMER = 5
+SERVERLESS_URL = os.getenv("SERVERLESS_URL")
+CODESPACE_ID = os.getenv("CODESPACE_ID")
 
 
 def create_index(collection: Collection, index_name: str, model: Dict) -> None:
@@ -67,3 +71,15 @@ def check_index_ready(collection: Collection, index_name: str) -> None:
 
         print(f"{index_name} index status: {status}")
         time.sleep(SLEEP_TIMER)
+
+
+def track_progress(task: str) -> None:
+    """
+    Track progress of a task
+
+    Args:
+        task (str): Task name
+    """
+    print(f"Tracking progress for task {task}")
+    payload = {"task": task, "id": CODESPACE_ID}
+    requests.post(url=SERVERLESS_URL, json={"task": "track_progress", "data": payload})
